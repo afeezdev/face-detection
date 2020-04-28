@@ -35,6 +35,9 @@ class Signin extends React.Component {
 				} else{
 					return alert('Wrong Email or Password')
 				}
+			})
+			.catch(err => {
+				alert("Wrong Email or Password");
 			})	
 	};
 

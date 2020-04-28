@@ -42,7 +42,9 @@ class Register extends React.Component {
 				else{
 					alert('Incomplete form submission')
 				}
-			});
+			}).catch(err =>{
+				alert("Incomplete form submission");
+			})
 	};
 
 	render() {
