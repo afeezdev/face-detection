@@ -19,26 +19,26 @@ class Signin extends React.Component {
 	};
 
 	onSubmitSignIn = () => {
-		fetch('http://localhost:3000/signin', {
-			method: 'post',
-			headers: { 'Content-Type': 'application/JSON' },
-			body: JSON.stringify({
-				email: this.state.signInEmail,
-				password: this.state.signInPassword
-			})
-		})
-			.then(response => response.json())
-			.then(user => {
-				if(user.id){
-					this.props.loadUser(user);
-					this.props.onRouteChange('home');
-				} else{
-					return alert('Wrong Email or Password')
-				}
-			})
-			.catch(err => {
-				alert("Wrong Email or Password");
-			})	
+		fetch("https://face-detection-api-afeezdev.herokuapp.com/signin", {
+      method: "post",
+      headers: { "Content-Type": "application/JSON" },
+      body: JSON.stringify({
+        email: this.state.signInEmail,
+        password: this.state.signInPassword,
+      }),
+    })
+      .then((response) => response.json())
+      .then((user) => {
+        if (user.id) {
+          this.props.loadUser(user);
+          this.props.onRouteChange("home");
+        } else {
+          return alert("Wrong Email or Password");
+        }
+      })
+      .catch((err) => {
+        alert("Wrong Email or Password");
+      });	
 	};
 
 	render() {
