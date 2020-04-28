@@ -78,7 +78,7 @@ class App extends Component {
 
 	onButtonSubmit = () => {
 		this.setState({ imageUrl: this.state.input });
-		fetch('https://agile-savannah-83536.herokuapp.com/imageUrl', {
+		fetch('http://localhost:3000/imageUrl', {
 			method: 'post',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
@@ -88,7 +88,7 @@ class App extends Component {
 			.then((response) => response.json())
 			.then((response) => {
 				if (response) {
-					fetch('https://agile-savannah-83536.herokuapp.com/image', {
+					fetch('http://localhost:3000/image', {
 						method: 'put',
 						headers: { 'Content-Type': 'application/json' },
 						body: JSON.stringify({
@@ -135,8 +135,8 @@ class App extends Component {
 				) : route === 'signin' ? (
 					<Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
 				) : (
-					<Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
-				)}
+							<Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+						)}
 			</div>
 		);
 	}

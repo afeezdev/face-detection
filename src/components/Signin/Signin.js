@@ -19,7 +19,7 @@ class Signin extends React.Component {
 	};
 
 	onSubmitSignIn = () => {
-		fetch('https://agile-savannah-83536.herokuapp.com/api/login', {
+		fetch('http://localhost:3000/signin', {
 			method: 'post',
 			headers: { 'Content-Type': 'application/JSON' },
 			body: JSON.stringify({
@@ -27,13 +27,15 @@ class Signin extends React.Component {
 				password: this.state.signInPassword
 			})
 		})
-			.then((response) => response.json())
-			.then((user) => {
-				if (user._id) {
+			.then(response => response.json())
+			.then(user => {
+				if(user.id){
 					this.props.loadUser(user);
 					this.props.onRouteChange('home');
+				} else{
+					return alert('Wrong Email or Password')
 				}
-			});
+			})	
 	};
 
 	render() {
